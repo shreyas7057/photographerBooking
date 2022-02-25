@@ -1,0 +1,64 @@
+{% extends 'customadmin/base.html' %}
+
+
+{% block content %}
+
+<div class="main-content-inner">
+    <div class="row">
+        <div class="col-lg-6 col-ml-12">
+            <div class="row">
+                <!-- Textual inputs start -->
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Edit Information</h4>
+
+                            {% include 'customadmin/includes/_messages.html' %}
+
+                            <form method="POST" action="{% url 'update_photographer_info' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Location</label>
+                                    <input class="form-control" type="text" value="{% for i in photographer %}{{ i.location }}{% endfor %}" name="location">
+                                    
+                                    <input class="form-control" type="hidden" value="{% for i in photographer %}{{ i.user.id }}{% endfor %}" name="photographer">
+                                
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Studio Name</label>
+                                    <input class="form-control" type="text" value="{% for i in photographer %}{{ i.studio_name }}{% endfor %}"  name="studio_name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Mobile</label>
+                                    <input class="form-control" type="text" value="{% for i in photographer %}{{ i.mobile }}{% endfor %}" name="mobile">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Address</label>
+                                    <input class="form-control" type="text" value="{% for i in photographer %}{{ i.address }}{% endfor %}" name="address">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Cover Photo</label>
+                                    <input class="form-control" type="file" value="{% for i in photographer %}{{ i.cover_photo }}{% endfor %}" name="cover_photo">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Your Photo</label>
+                                    <input class="form-control" type="file" value="{% for i in photographer %}{{ i.your_photo }}{% endfor %}" name="your_photo">
+                                </div>
+
+                                <input type="submit" class="btn btn-dark btn-lg btn-block" value="Submit Information">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends 'customadmin/base.html' %}
+
+{% block content %}
+{% include 'customadmin/includes/_messages.html' %}
+<div class="main-content-inner">
+    <div class="card-area">
+        <div class="row">
+            {% for g in gallery %}
+            <div class="col-lg-4 col-md-6 mt-5">
+                <div class="card card-bordered">
+                    <img class="card-img-top img-fluid" src="{{ g.photo.url }}" alt="image">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

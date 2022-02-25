@@ -1,0 +1,54 @@
+{% extends 'customadmin/base.html' %}
+
+
+{% block content %}
+
+
+<div class="main-content-inner">
+    <div class="row">
+        <div class="col-lg-6 col-ml-12">
+            <div class="row">
+                <!-- Textual inputs start -->
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Generate Invoice</h4>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Package</label>
+                                    <select required name="package" class="form-control">
+                                        <option>Select Package</option>
+                                        {% for i in package %}
+                                        <option value="{{ i.id }}">{{ i.name }}->{{ i.price }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Extra Amount</label>
+                                    <input class="form-control" type="text" name="extra_amt">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Payment Status</label>
+                                    <select required name="payment_status" class="form-control">
+                                        <option>Select Payment Status</option>
+                                        <option value="Paid">Paid</option>
+                                        <option value="Not Paid">Not Paid</option>
+                                    </select>
+                                </div>
+
+                                <input type="submit" class="btn btn-dark btn-lg btn-block" value="Generate Invoice">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,66 @@
+{% extends 'customadmin/base.html' %}
+
+{% block content %}
+
+<!-- market value area start -->
+<div class="row mt-5 mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-center">
+                    <h4 class="header-title mb-0">Your Bookings List</h4>
+                    <p>Export as <a href="{% url 'export_booking_pdf' %}">PDF</a>/<a href="{% url 'export_booking_csv' %}">CSV</a></p>
+                </div>
+                <div class="market-status-table mt-4">
+                    <div class="table-responsive">
+                        <table class="dbkit-table">
+                            <tr class="heading-td">
+                                
+                                <td class="coin-name">Name</td>
+                                <td class="buy">Email Id</td>
+                                <td class="buy">Mobile Number</td>
+                                <td class="buy">Start Date</td>
+                                <td class="buy">End Date</td>
+                                <td class="buy">Address</td>
+                                <td class="buy">Num of Days</td>
+                                <td class="buy">Comment</td>
+                                <td class="buy">Completed</td>
+                                <td class="buy">Created</td>
+                                
+                                <td class="stats-chart">Action</td>
+                                <td class="stats-chart">Generate Invoice</td>
+                            </tr>
+                            {% for p in booking %}
+                            <tr>
+                                
+                                <td class="coin-name">{{ p.name }}</td>
+                                <td class="buy">{{ p.email }}</td>
+                                <td class="buy">{{ p.mobile }}</td>
+                                <td class="buy">{{ p.start_date|date:"D d,M,Y" }}</td>
+                                <td class="buy">{{ p.end_date|date:"D d,M,Y" }}</td>
+                                <td class="buy">{{ p.address }}</td>
+                                <td class="buy">{{ p.no_of_days }}</td>
+                                <td class="buy">{{ p.comment }}</td>
+                                <td class="buy">{{ p.completed }}</td>
+                                <td class="buy">{{ p.created_at|date:"D d M Y" }}</td>
+                                <td class="buy">
+                                    <ul class="d-flex justify-content-center">
+                                        <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-edit"></i></a></li>
+                                        <li><a href="{% url 'delete_booking' p.id %}" class="text-danger"><i class="ti-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                                <td class="buy"><a href="{% url 'generate_invoice' p.id %}">Invoice</a></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- market value area end -->
+
+
+{% endblock content %}
+

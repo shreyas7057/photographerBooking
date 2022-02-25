@@ -1,0 +1,49 @@
+{% extends 'customadmin/base.html' %}
+
+{% block content %}
+
+<!-- market value area start -->
+<div class="row mt-5 mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-center">
+                    <h4 class="header-title mb-0">Your Team Members</h4>
+                </div>
+                {% include 'customadmin/includes/_messages.html' %}
+                <div class="market-status-table mt-4">
+                    <div class="table-responsive">
+                        <table class="dbkit-table">
+                            <tr class="heading-td">
+                                <td class="mv-icon">Photo</td>
+                                <td class="coin-name">Name</td>
+                                <td class="buy">Speciality</td>
+                                
+                                <td class="stats-chart">Action</td>
+                            </tr>
+                            {% for p in team %}
+                            <tr>
+                                <td class="mv-icon"><img src="{{ p.image.url }}" alt="icon">
+                                </td>
+                                <td class="coin-name">{{ p.name }}</td>
+                                <td class="buy">{{ p.speciality }}</td>
+                                <td class="buy">
+                                    <ul class="d-flex justify-content-center">
+                                        <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-edit"></i></a></li>
+                                        <li><a href="{% url 'delete_team' p.id %}" class="text-danger"><i class="ti-trash"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- market value area end -->
+
+
+{% endblock content %}
+

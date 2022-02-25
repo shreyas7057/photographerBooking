@@ -1,0 +1,42 @@
+{% extends 'customadmin/base.html' %}
+
+
+{% block content %}
+
+<div class="main-content-inner">
+    <div class="row">
+        <div class="col-lg-6 col-ml-12">
+            <div class="row">
+                <!-- Textual inputs start -->
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Add Service</h4>
+
+                            {% include 'customadmin/includes/_messages.html' %}
+
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Service Type</label>
+                                    <input class="form-control" type="text" name="serviceType">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Description</label>
+                                    <textarea class="form-control" name="description"></textarea>
+                                </div>
+
+
+                                <input type="submit" class="btn btn-dark btn-lg btn-block" value="Add Service">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

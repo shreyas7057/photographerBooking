@@ -1,0 +1,85 @@
+{% load static %}
+<div class="sidebar-menu">
+    <div class="sidebar-header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="{% static 'customadmin/images/icon/logo.png' %}" alt="logo"></a>
+        </div>
+    </div>
+    <div class="main-menu">
+        <div class="menu-inner">
+            <nav>
+                <ul class="metismenu" id="menu">
+                    <li class="active">
+                        <a href="{% if request.user.user_type == 1 %}{% url 'custom_admin_index' %}{% else %} {% url 'custom_photographer_index' %} {% endif %}" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Profile</span></a>
+                        <ul class="collapse">
+                            <li><a href="{% url 'add_photographer_info' %}">Add information</a></li>
+                            <li><a href="{% url 'view_photographer_info' %}">View Information</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Stats</span></a>
+                        <ul class="collapse">
+                            <li><a href="{% url 'stat_add' %}">Add Stats</a></li>
+                            <li><a href="{% url 'view_stat' %}">View Stats</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>Gallery</span></a>
+                        <ul class="collapse">
+                            <li><a href="{% url 'add_gallery' %}">Add Photos</a></li>
+                            <li><a href="{% url 'view_gallery' %}">View Photos</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-slice"></i><span>Team</span></a>
+                        <ul class="collapse">
+                            <li><a href="{% url 'add_team' %}">Add Team</a></li>
+                            <li><a href="{% url 'view_team' %}">View Team</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-table"></i>
+                            <span>Service</span></a>
+                        <ul class="collapse">
+                            <li><a href="{% url 'add_service' %}">Add Service</a></li>
+                            <li><a href="{% url 'view_service' %}">View Service</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layers-alt"></i> <span>Package</span></a>
+                        <ul class="collapse">
+                            <li><a href="{% url 'add_package' %}">Add Package</a></li>
+                            <li><a href="{% url 'view_package' %}">View Package</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-exclamation-triangle"></i>
+                            <span>Bookings</span></a>
+                        <ul class="collapse">
+                            <li><a href="{% url 'view_booking' %}">View Bookings</a></li>
+                            <li><a href="{% url 'add_booking' %}">Add Bookings</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-exclamation-triangle"></i>
+                            <span>Invoices</span></a>
+                        <ul class="collapse">
+                            <li><a href="{% url 'get_invoice' %}">View Invoices</a></li>                           
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

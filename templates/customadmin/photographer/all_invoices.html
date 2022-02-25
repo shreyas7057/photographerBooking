@@ -1,0 +1,58 @@
+{% extends 'customadmin/base.html' %}
+
+{% block content %}
+
+<!-- market value area start -->
+<div class="row mt-5 mb-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-sm-flex justify-content-between align-items-center">
+                    <h4 class="header-title mb-0">Invoices</h4>
+                </div>
+                {% include 'customadmin/includes/_messages.html' %}
+                <div class="market-status-table mt-4">
+                    <div class="table-responsive">
+                        <table class="dbkit-table">
+                            <tr class="heading-td">
+                                
+                                <td class="coin-name">Customer Name</td>
+                                <td class="coin-name">Package Name</td>
+                                <td class="coin-name">Package Amount</td>
+                                <td class="coin-name">Extra Amount</td>
+                                <td class="coin-name">Total Amount</td>
+                                <td class="coin-name">Payment Status</td>
+                                <td class="coin-name">Created On</td>
+                                <td class="coin-name">Download Invoice</td>
+                            </tr>
+                            {% for p in invoices %}
+                            <tr>
+                                
+                                <td class="buy">{{ p.booking.name }}</td>
+                                <td class="buy">{{ p.package.name }}</td>
+                                <td class="buy">{{ p.package.price }}</td>
+                                <td class="buy">{{ p.extra_amt }}</td>
+                                <td class="buy">{{ p.calc_total_amt }}</td>
+                                {% if p.payment_status == "Paid" %}
+                                <td class="buy status-p bg-success">{{ p.payment_status }}</td>
+                                {% else %}
+                                <td class="buy status-p bg-danger">{{ p.payment_status }}</td>
+                                {% endif %}
+                                <td class="buy">{{ p.created_at|date:"D d M Y" }}</td>
+                                <td class="buy">
+                                    
+                                <td class="buy"><a href="{% url 'download_invoice_pdf' p.id %}">Download</a></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- market value area end -->
+
+
+{% endblock content %}
+

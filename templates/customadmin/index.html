@@ -1,0 +1,102 @@
+{% extends 'customadmin/base.html' %}
+
+
+{% block content %}
+<div class="main-content-inner">
+    <!-- sales report area start -->
+    <div class="sales-report-area mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-report mb-xs-30">
+                    <div class="s-report-inner pr--20 pt--30 mb-3">
+                        
+                        <div class="s-report-title d-flex justify-content-between">
+                            <h4 class="header-title mb-0">Total Photographers</h4>
+                            
+                        </div>
+                        <div class="d-flex justify-content-between pb-2">
+                            <h2>{{ photographers }}</h2>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-report mb-xs-30">
+                    <div class="s-report-inner pr--20 pt--30 mb-3">
+                        <div class="s-report-title d-flex justify-content-between">
+                            <h4 class="header-title mb-0">Total Bookings</h4>
+                            
+                        </div>
+                        <div class="d-flex justify-content-between pb-2">
+                            <h2>{{ bookings }}</h2>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-report">
+                    <div class="s-report-inner pr--20 pt--30 mb-3">
+                        
+                        <div class="s-report-title d-flex justify-content-between">
+                            <h4 class="header-title mb-0">Today's Bookings</h4>
+                            
+                        </div>
+                        <div class="d-flex justify-content-between pb-2">
+                            <h2>{{ todays_booking }}</h2>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- sales report area end -->
+
+    <!-- market value area start -->
+    <div class="row mt-5 mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-sm-flex justify-content-between align-items-center">
+                        <h4 class="header-title mb-0">All Photographers</h4>
+                    </div>
+                    <div class="market-status-table mt-4">
+                        <div class="table-responsive">
+                            <table class="dbkit-table">
+                                <tr class="heading-td">
+                                    <td class="mv-icon">Photo</td>
+                                    <td class="coin-name">Photographer Name</td>
+                                    <td class="buy">Email ID</td>
+                                    <td class="sell">Location</td>
+                                    <td class="trends">Address</td>
+                                    <td class="attachments">Studio Name</td>
+                                    <td class="stats-chart">Mobile No.</td>
+                                </tr>
+                                {% for p in photographer %}
+                                <tr>
+                                    <td class="mv-icon"><img src="{{ p.your_photo.url }}" alt="icon">
+                                    </td>
+                                    <td class="coin-name">{{ p.user.full_name }}</td>
+                                    <td class="buy">{{ p.user.email }}</td>
+                                    <td class="sell">{{ p.location }}</td>
+                                    <td class="trends">{{ p.address }}</td>
+                                    <td class="attachments">{{ p.studio_name }}</td>
+                                    <td class="stats-chart">
+                                        {{ p.mobile }}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- market value area end -->
+
+</div>
+{% endblock content %}

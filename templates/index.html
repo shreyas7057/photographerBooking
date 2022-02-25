@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dream Photograph</title>
+</head>
+
+<body>
+    <h1 class="center-align"><a href="/">Dream Photograph</a></h1>
+    <p class="center-align">Search photographer and book appointment for your clicks</p>
+    <p class="center-align">Register as photographer
+        <a class="waves-effect waves-light btn black" href="{% url 'register-user' %}">Click here</a>
+    </p>
+    <br><br>
+
+    <div class="row">
+
+        <div class="col s3">
+            <img src="/static/images/index/g12.jpg" class="materialboxed" height="250" width="250" alt="">
+            <br>
+            <img src="/static/images/index/g8.jpg" class="materialboxed" height="250" width="250" alt="">
+            <br>
+            <img src="/static/images/index/g9.jpg" class="materialboxed" height="250" width="250" alt="">
+            <br>
+            <img src="/static/images/index/g10.jpg" class="materialboxed" height="250" width="250" alt="">
+        </div>
+
+        <div class="col s6">
+            <form method="GET" action="/">
+                <div class="row">
+
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">search</i>
+                        <input type="text" id="autocomplete-input" class="autocomplete" name="q">
+                        <label for="autocomplete-input">Location</label>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Search
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                {% if results %}
+                <div class="row">
+                    <ul class="collection">
+                        
+                        {% for r in results %}
+                        <li class="collection-item">
+                            <p class="right-align">Name: {{ r.user.full_name }}</p>
+                            <button type="submit" class="waves-effect waves-light btn black"><a href="{% url 'visit_photography_site' r.id %}">Visit</a></button>
+
+                            <p class="right-align">Location: {{ r.location }}</p>
+                        </li>
+                        {% endfor %}
+                        
+                    </ul>
+                </div>
+                {% else %}
+                <div class="row">
+                    <ul class="collection">
+                        
+                        {% for r in results %}
+                        <br>
+                        <li class="collection-item">
+                            <p class="right-align">Name:{{ r.user.full_name }}</p>
+                            <button type="submit" class="waves-effect waves-light btn black"><a href="{% url 'visit_photography_site' r.id %}">Visit</a></button>
+
+                            <p class="right-align">Location{{ r.location }}</p>
+                        </li>
+                        
+                        {% endfor %}
+                        
+
+                    </ul>
+                </div>
+
+                {% endif %}
+
+            </form>
+
+        </div>
+
+        <div class="col s3">
+            <img src="/static/images/index/g10.jpg" class="materialboxed" height="250" width="250" alt="">
+            <br>
+            <img src="/static/images/index/g11.jpg" class="materialboxed" height="250" width="250" alt="">
+            <br>
+            <img src="/static/images/index/g12.jpg" class="materialboxed" height="250" width="250" alt="">
+            <br>
+            <img src="/static/images/index/g9.jpg" class="materialboxed" height="250" width="250" alt="">
+        </div>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
